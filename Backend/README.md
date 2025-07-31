@@ -1,4 +1,3 @@
-# Backend API Documentation
 
 ## POST `/users/register`
 
@@ -82,4 +81,92 @@ curl -X POST http://localhost:PORT/users/register \
 
 ### **Notes**
 - The endpoint returns a JWT token for authentication.
-- All required fields must be provided and meet validation
+- All required fields must be provided and meet validation.
+
+---
+
+## POST `/users/login`
+
+Authenticates a user and returns a JWT token.
+
+---
+
+### **Request Body**
+
+Send a JSON object with the following structure:
+
+```json
+{
+  "email": "johndoe@example.com",
+  "password": "yourpassword"
+}
+```
+
+#### **Field Requirements**
+- `email` (string, required): Must be a valid email format.
+- `password` (string, required): Minimum 6 characters.
+
+---
+
+### **Responses**
+
+#### **200 OK**
+- **Description:** User authenticated successfully.
+- **Body:**
+  ```json
+  {
+    "token": "<jwt_token>",
+    "user": {
+      "_id": "<user_id>",
+      "fullname": {
+        "firstname": "John",
+        "lastname": "Doe"
+      },
+      "email": "johndoe@example.com"
+      // other user fields...
+    }
+  }
+  ```
+
+#### **401 Unauthorized**
+- **Description:** Invalid email or password.
+- **Body:**
+  ```json
+  {
+    "message": "Invalid email or password"
+  }
+  ```
+
+#### **400 Bad Request**
+- **Description:** Validation failed (e.g., missing fields, invalid email, password too short).
+- **Body:**
+  ```json
+  {
+    "errors": [
+      {
+        "msg": "Error message",
+        "param": "field",
+        "location": "body"
+      }
+    ]
+  }
+  ```
+
+---
+
+### **Example Request**
+
+```bash
+curl -X POST http://localhost:PORT/users/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "johndoe@example.com",
+    "password": "yourpassword"
+  }'
+```
+
+---
+
+### **Notes**
+- The endpoint returns a JWT token for authentication.
+- Ensure the email and password are correct to avoid authentication errors.
