@@ -379,9 +379,192 @@ curl -X POST http://localhost:PORT/captains/register \
 
 ---
 
-### **Notes**
-- The endpoint returns a JWT token for authentication.
-- All required fields must be provided and meet validation.
-- Ensure the vehicle plate is unique to avoid conflicts.
+### POST `/captains/login`
+
+Authenticates a captain and returns a JWT token.
 
 ---
+
+#### **Request Body**
+
+Send a JSON object with the following structure:
+
+```json
+{
+  "email": "johndoe@example.com",
+  "password": "yourpassword"
+}
+```
+
+#### **Field Requirements**
+- `email` (string, required): Must be a valid email format.
+- `password` (string, required): Minimum 6 characters.
+
+---
+
+#### **Responses**
+
+##### **200 OK**
+- **Description:** Captain authenticated successfully.
+- **Body:**
+  ```json
+  {
+    "token": "<jwt_token>",
+    "captain": {
+      "_id": "<captain_id>",
+      "fullname": {
+        "firstname": "John",
+        "lastname": "Doe"
+      },
+      "email": "johndoe@example.com",
+      "vehicle": {
+        "color": "Red",
+        "plate": "ABC123",
+        "capacity": 4,
+        "vehicleType": "car"
+      }
+    }
+  }
+  ```
+
+##### **401 Unauthorized**
+- **Description:** Invalid email or password.
+- **Body:**
+  ```json
+  {
+    "message": "Invalid email or password"
+  }
+  ```
+
+##### **400 Bad Request**
+- **Description:** Validation failed (e.g., missing fields, invalid email, password too short).
+- **Body:**
+  ```json
+  {
+    "errors": [
+      {
+        "msg": "Error message",
+        "param": "field",
+        "location": "body"
+      }
+    ]
+  }
+  ```
+
+---
+
+#### **Example Request**
+
+```bash
+curl -X POST http://localhost:PORT/captains/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "johndoe@example.com",
+    "password": "yourpassword"
+  }'
+```
+
+---
+
+### GET `/captains/profile`
+
+Fetches the profile of the authenticated captain.
+
+---
+
+#### **Headers**
+
+- `Authorization` (string, required): Bearer token for authentication.
+
+---
+
+#### **Responses**
+
+##### **200 OK**
+- **Description:** Captain profile fetched successfully.
+- **Body:**
+  ```json
+  {
+    "captain": {
+      "_id": "<captain_id>",
+      "fullname": {
+        "firstname": "John",
+        "lastname": "Doe"
+      },
+      "email": "johndoe@example.com",
+      "vehicle": {
+        "color": "Red",
+        "plate": "ABC123",
+        "capacity": 4,
+        "vehicleType": "car"
+      }
+    }
+  }
+  ```
+
+##### **401 Unauthorized**
+- **Description:** Captain is not authenticated.
+- **Body:**
+  ```json
+  {
+    "message": "Unauthorized"
+  }
+  ```
+
+---
+
+#### **Example Request**
+
+```bash
+curl -X GET http://localhost:PORT/captains/profile \
+  -H "Authorization: Bearer <jwt_token>"
+```
+
+---
+
+### GET `/captains/logout`
+
+Logs out the authenticated captain by invalidating the token.
+
+---
+
+#### **Headers**
+
+- `Authorization` (string, required): Bearer token for authentication.
+
+---
+
+#### **Responses**
+
+##### **200 OK**
+- **Description:** Captain logged out successfully.
+- **Body:**
+  ```json
+  {
+    "message": "Logged out successfully"
+  }
+  ```
+
+##### **401 Unauthorized**
+- **Description:** Captain is not authenticated.
+- **Body:**
+  ```json
+  {
+    "message": "Unauthorized"
+  }
+  ```
+
+---
+
+#### **Example Request**
+
+```bash
+curl -X GET http://localhost:PORT/captains/logout \
+  -H "Authorization: Bearer <jwt_token>"
+```
+
+---
+
+### **Notes**
+- Ensure the token is valid and not expired.
+- The token will be added to a blacklist to prevent further use.
