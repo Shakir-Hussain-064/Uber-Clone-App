@@ -1,3 +1,4 @@
+# Backend API Documentation
 
 ## POST `/users/register`
 
@@ -170,3 +171,106 @@ curl -X POST http://localhost:PORT/users/login \
 ### **Notes**
 - The endpoint returns a JWT token for authentication.
 - Ensure the email and password are correct to avoid authentication errors.
+
+---
+
+## GET `/users/profile`
+
+Fetches the profile of the authenticated user.
+
+---
+
+### **Headers**
+
+- `Authorization` (string, required): Bearer token for authentication.
+
+---
+
+### **Responses**
+
+#### **200 OK**
+- **Description:** User profile fetched successfully.
+- **Body:**
+  ```json
+  {
+    "_id": "<user_id>",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "email": "johndoe@example.com"
+    // other user fields...
+  }
+  ```
+
+#### **401 Unauthorized**
+- **Description:** User is not authenticated.
+- **Body:**
+  ```json
+  {
+    "message": "Unauthorized"
+  }
+  ```
+
+---
+
+### **Example Request**
+
+```bash
+curl -X GET http://localhost:PORT/users/profile \
+  -H "Authorization: Bearer <jwt_token>"
+```
+
+---
+
+### **Notes**
+- Ensure the token is valid and not expired.
+
+---
+
+## GET `/users/logout`
+
+Logs out the authenticated user by invalidating the token.
+
+---
+
+### **Headers**
+
+- `Authorization` (string, required): Bearer token for authentication.
+
+---
+
+### **Responses**
+
+#### **200 OK**
+- **Description:** User logged out successfully.
+- **Body:**
+  ```json
+  {
+    "message": "Logged Out"
+  }
+  ```
+
+#### **401 Unauthorized**
+- **Description:** User is not authenticated.
+- **Body:**
+  ```json
+  {
+    "message": "Unauthorized"
+  }
+  ```
+
+---
+
+### **Example Request**
+
+```bash
+curl -X GET http://localhost:PORT/users/logout \
+  -H "Authorization: Bearer <jwt_token>"
+```
+
+---
+
+### **Notes**
+- Ensure the token is valid and not expired.
+- The token will be added to a blacklist to prevent further use.
