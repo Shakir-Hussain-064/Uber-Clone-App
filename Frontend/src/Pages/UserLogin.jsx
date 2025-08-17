@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const UserLogin = () => {
-    const [email, setemail] = useState('')
-    const [password, setpassword] = useState('')
-    const [userData, setuserData] = useState({})
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [userData, setUserData] = useState({})    
 
-    const [user , setUser] = useContext(UserDataContext)
+    const {user , setUser} = useContext(UserDataContext)
     const navigate = useNavigate()
 
 
@@ -32,8 +32,8 @@ const UserLogin = () => {
         }
 
         
-        setemail('')
-        setpassword('')
+        setEmail('')
+        setPassword('')
     }
 
   return (
@@ -41,8 +41,7 @@ const UserLogin = () => {
         <div>
             <img className="w-16 mb-5" src="https://imgs.search.brave.com/02_P5YeSyy1WG204Yw6PXZE4H8vIFyB9wYtRYd1r_uI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjAv/MDUvVWJlci1Mb2dv/LTEyMHg2Ny5wbmc" alt="" />
 
-        <form onSubmit={(e) => {
-            e.preventDefault();
+        <form onSubmit={(e) => {    
             submitHandler(e)}
         }>
             <h3 className='text-base mb-1 font-medium'>What's your email </h3>
@@ -51,7 +50,7 @@ const UserLogin = () => {
             required 
             value={email}
             onChange={(e) => {
-                setemail(e.target.value)
+                setEmail(e.target.value)
             }}
             className="bg-[#eeeeee] mb-3 rounded px-4 py-2 border w-full text-base placeholder:text-base"
             type="email"
@@ -64,7 +63,7 @@ const UserLogin = () => {
             required
             value={password}
             onChange={(e) => {
-                setpassword(e.target.value)
+                setPassword(e.target.value)
             }}
             className="bg-[#eeeeee] mb-4 rounded px-4 py-2 border w-full text-base placeholder:text-base"
             type="password" 

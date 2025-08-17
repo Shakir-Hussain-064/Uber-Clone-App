@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { CaptainDataContext } from '../context/CaptainContext'
@@ -8,13 +8,12 @@ import axios from 'axios'
 
 const CaptainSignup = () => {
 
-        const navigate = useNavigate()
+      const navigate = useNavigate()
 
-        const [email, setemail] = useState('')
-        const [password, setpassword] = useState('')
-        const [firstname, setfirstname] = useState('')
-        const [lastname, setlastname] = useState('')
-        
+        const [ email, setEmail ] = useState('')
+        const [ password, setPassword ] = useState('')
+        const [ firstName, setFirstName ] = useState('')
+        const [ lastName, setLastName ] = useState('')
 
         const [ vehicleColor, setVehicleColor ] = useState('')
         const [ vehiclePlate, setVehiclePlate ] = useState('')
@@ -29,8 +28,8 @@ const CaptainSignup = () => {
             e.preventDefault()
             const captainData = {
                 fullname:{
-                    firstname:firstname,
-                    lastname:lastname
+                    firstname: firstName,
+                    lastname: lastName
                 },
                 email:email,
                 password:password,
@@ -52,10 +51,10 @@ const CaptainSignup = () => {
                 navigate('/captain-login')
             }
     
-            setemail('')
-            setpassword('')
-            setfirstname('')
-            setlastname('')
+            setEmail('')
+            setPassword('')
+            setFirstName('')
+            setLastName('')
             setVehicleColor('')
             setVehiclePlate('')
             setVehicleCapacity('')
@@ -66,10 +65,9 @@ const CaptainSignup = () => {
     <div className='p-4 h-screen flex flex-col justify-between'>
             <div>
                 <img className="w-20 mb-5" src="https://www.svgrepo.com/show/505031/uber-driver.svg"></img>
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                submitHandler(e)}
-            }>
+            <form onSubmit={(e) => {    
+                submitHandler(e)
+              }}>
                 <h3 className='text-base w-full mb-1 font-medium'>What's our Captain's name </h3>
                 <div className='flex gap-3 mb-2'>
                     <input 
@@ -77,9 +75,9 @@ const CaptainSignup = () => {
                         className="bg-[#eeeeee] w-1/2 rounded px-4 py-2 border  text-base placeholder:text-sm"
                         type="text"
                         placeholder='First name'
-                        value={firstname}
+                        value={firstName}
                         onChange={(e)=>{
-                            setfirstname(e.target.value)
+                            setFirstName(e.target.value)
                         }}
                         />
 
@@ -88,9 +86,9 @@ const CaptainSignup = () => {
                         className="bg-[#eeeeee] w-1/2 rounded px-4 py-2 border  text-base placeholder:text-sm"
                         type="text"
                         placeholder='Last name'
-                        value={lastname}
+                        value={lastName}
                         onChange={(e)=>{
-                            setlastname(e.target.value)
+                            setLastName(e.target.value)
                         }}
                     />
                 </div>
@@ -105,7 +103,7 @@ const CaptainSignup = () => {
                 placeholder='example@gmail.com'
                 value={email}
                 onChange={(e)=>{
-                    setemail(e.target.value)
+                    setEmail(e.target.value)
                     }}
                 />
     
@@ -116,7 +114,7 @@ const CaptainSignup = () => {
                 // type="password" 
                 value={password}
                 onChange={(e)=>{
-                    setpassword(e.target.value)
+                    setPassword(e.target.value)
                 }}
                 required type = 'password'
                 placeholder='password'
@@ -124,7 +122,7 @@ const CaptainSignup = () => {
 
 
 
-                 <h3 className='text-lg font-medium mb-2'>Vehicle Information</h3>
+           <h3 className='text-lg font-medium mb-2'>Vehicle Information</h3>
           <div className='flex gap-4 mb-7'>
             <input
               required

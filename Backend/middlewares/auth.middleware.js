@@ -11,7 +11,7 @@ module.exports.authUser = async (req, res, next) => {
     }
 
 
-    const isBlacklisted = await blackListTokenModel.findOne({token, token });
+    const isBlacklisted = await blackListTokenModel.findOne({token: token });
 
     if (isBlacklisted) {
         return res.status(401).json({message: 'Token is blacklisted. Please log in again.'});
@@ -27,7 +27,7 @@ module.exports.authUser = async (req, res, next) => {
         return next();
     }
     catch (err) {  
-        return res.status(401).json({message: 'Invalid token.'});
+        return res.status(401).json({message: 'Invalid token.'}); 
     }
 }
 

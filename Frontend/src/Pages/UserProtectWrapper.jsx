@@ -1,4 +1,5 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, { useEffect, useState} from 'react'
+import {useContext} from 'react'
 import { UserDataContext } from '../context/UserContext.jsx'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -10,7 +11,7 @@ import axios from 'axios'
 
     const token = localStorage.getItem('token')  
     const navigate = useNavigate()
-    const [ user, setUser ] = useContext(UserDataContext)
+    const { user, setUser } = useContext(UserDataContext)
     const [ isLoading, setIsLoading ] = useState(true)
 
     useEffect(() => {
@@ -24,8 +25,8 @@ import axios from 'axios'
             }
         }).then(response => {
             if (response.status === 200) {
-                setUser(response.data.user)
-                setIsLoading(false)
+                setUser(response.data)
+                setIsLoading(false) 
             }
         })
             .catch(err => {

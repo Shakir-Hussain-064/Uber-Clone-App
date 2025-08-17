@@ -4,21 +4,21 @@ import axios from 'axios'
 import {UserDataContext} from '../context/UserContext.jsx'
 
 const UserSignup = () => { 
-    const [email, setemail] = useState('')
-    const [password, setpassword] = useState('')
-    const [firstname, setfirstname] = useState('')
-    const [lastname, setlastname] = useState('')
-    const [userData, setuserData] = useState({})
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [userData, setUserData] = useState({})
 
     const navigate = useNavigate()
-    const [user, setUser ] = useContext(UserDataContext)
+    const { user, setUser } = useContext(UserDataContext)
 
     const submitHandler = async (e) => {
         e.preventDefault()
        const newUser = {
             fullname:{
-                firstname:firstname,
-                lastname:lastname
+                firstname:firstName,
+                lastname:lastName
             },
             email:email,
             password:password
@@ -33,10 +33,10 @@ const UserSignup = () => {
             navigate('/login')
        }
 
-        setemail('')
-        setpassword('')
-        setfirstname('')
-        setlastname('')
+            setEmail('')
+            setFirstName('')
+            setLastName('')
+            setPassword('')
     }
 
     return (
@@ -45,7 +45,6 @@ const UserSignup = () => {
                 <img className="w-16 mb-5" src="https://imgs.search.brave.com/02_P5YeSyy1WG204Yw6PXZE4H8vIFyB9wYtRYd1r_uI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjAv/MDUvVWJlci1Mb2dv/LTEyMHg2Ny5wbmc" alt="" />
     
             <form onSubmit={(e) => {
-                e.preventDefault();
                 submitHandler(e)}
             }>
                 <h3 className='text-base mb-1 font-medium'>What's your name </h3>
@@ -55,9 +54,9 @@ const UserSignup = () => {
                         className="bg-[#eeeeee] w-1/2 rounded px-4 py-2 border  text-base placeholder:text-sm"
                         type="text"
                         placeholder='First name'
-                        value={firstname}
+                        value={firstName}
                         onChange={(e)=>{
-                            setfirstname(e.target.value)
+                            setFirstName(e.target.value)
                         }}
                         />
 
@@ -66,9 +65,9 @@ const UserSignup = () => {
                         className="bg-[#eeeeee] w-1/2 rounded px-4 py-2 border  text-base placeholder:text-sm"
                         type="text"
                         placeholder='Last name'
-                        value={lastname}
+                        value={lastName}
                         onChange={(e)=>{
-                            setlastname(e.target.value)
+                            setLastName(e.target.value)
                         }}
                     />
                 </div>
@@ -83,7 +82,7 @@ const UserSignup = () => {
                 placeholder='example@gmail.com'
                 value={email}
                 onChange={(e)=>{
-                    setemail(e.target.value)
+                    setEmail(e.target.value)
                     }}
                 />
     
@@ -93,7 +92,7 @@ const UserSignup = () => {
                 className="bg-[#eeeeee] mb-4 rounded px-4 py-2 border w-full text-base placeholder:text-sm"
                 value={password}
                 onChange={(e)=>{
-                    setpassword(e.target.value)
+                    setPassword(e.target.value)
                 }}
                 required type = "password"
                 placeholder='password'
