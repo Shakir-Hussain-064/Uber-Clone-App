@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom' // Added useLocation
 import { useEffect, useContext } from 'react'
 import { SocketContext } from '../context/SocketContext'
 import { useNavigate } from 'react-router-dom'
-// import LiveTracking from '../components/LiveTracking'
+import LiveTracking from '../Components/LiveTracking'
 
 const Riding = () => {
       const location = useLocation()
@@ -25,14 +25,13 @@ const Riding = () => {
           </Link>
            
           <div className='h-1/2'>
-             {/* <LiveTracking /> */}
-               <img className='h-full w-full object-cover' src="https://imgs.search.brave.com/A9FGg0apJw5tFxYaTVZR3XNGO-SbZK-IiQwKcfRzWi8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA3LzI4LzMwLzI2/LzM2MF9GXzcyODMw/MjYyMF9YZGRuZjVD/bDBLMUFDWnVyZDZ5/QnlVekhpSE1NSW9l/Ni5qcGc " alt="" />
+             <LiveTracking />
           </div>
           <div className='h-1/2 p-4'>
                <div className='flex items-centre justify-between'>
              <img className='h-17' src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_638,w_851/v1707429809/assets/2a/9fe873-1f16-4c89-ba41-2712211380a9/original/UberBlack.png" alt="" /> 
               <div className='text-right'>
-               <h2 className='text-lg font medium capitalize'>{ride?.captain.fullname.firstname}</h2>
+               <h2 className='text-lg font medium capitalize'>{ride?.captain.fullname.firstname + ' ' + ride?.user.fullname.lastname}</h2>
                <h4 className='text-xl font-semibold -mt-1 -mb-1 '>{ride?.captain.vehicle.plate}</h4>
                <p className='text-sm text-gray-600'>Maruti Suzuki Alto</p>
               </div>

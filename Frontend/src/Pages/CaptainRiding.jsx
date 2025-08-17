@@ -3,6 +3,8 @@ import gsap from 'gsap'
 import React, {useState, useRef} from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import FinishRiding from '../Components/FinishRiding'
+import LiveTracking from '../Components/LiveTracking';
+
 
 const CaptainRiding = () => {
     const [finishRidingPanel, setFinishRidingPanel] = useState(false)
@@ -29,15 +31,14 @@ const CaptainRiding = () => {
    <div className='h-screen'>
 
           <div className='fixed p-6 top-0 flex items-center justify-between w-screen'>
-            <img className='w-16 ' src="https://imgs.search.brave.com/02_P5YeSyy1WG204Yw6PXZE4H8vIFyB9wYtRYd1r_uI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjAv/MDUvVWJlci1Mb2dv/LTEyMHg2Ny5wbmc" alt="" />
-
+              <LiveTracking />
               <Link to='/captain-home' className=' h-10 w-10 bg-white flex items-center justify-center rounded-full ' >
                    <i className=' text-lg font-medium ri-logout-box-r-line'></i>
               </Link>
           </div>
 
               <div className="h-4/5 ">
-                <img className  ="h-full w-full object-cover" alt="" src="https://imgs.search.brave.com/A9FGg0apJw5tFxYaTVZR3XNGO-SbZK-IiQwKcfRzWi8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA3LzI4LzMwLzI2/LzM2MF9GXzcyODMw/MjYyMF9YZGRuZjVD/bDBLMUFDWnVyZDZ5/QnlVekhpSE1NSW9l/Ni5qcGc "/>
+                     <LiveTracking />
               </div>
                
           <div className='h-1/5 p-6 flex items-center justify-between relative bg-yellow-400 '

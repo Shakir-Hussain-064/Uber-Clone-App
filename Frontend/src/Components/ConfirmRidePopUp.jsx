@@ -8,7 +8,7 @@ const ConfirmRidePopUp = (props) => {
     const navigate = useNavigate()
 
     const submitHander = async (e) => {
-        e.preventDefault()
+        e.preventDefault() 
 
         const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/rides/start-ride`, {
             params: {
@@ -39,7 +39,7 @@ const ConfirmRidePopUp = (props) => {
             <div className='flex items-center justify-between p-3 bg-yellow-500 rounded-lg mt-3'>
                 <div className='flex items-center gap-3'>
                     <img className='h-12 w-12 rounded-full object-cover' src="https://imgs.search.brave.com/_wnGUcXGnb2p6A2L7P_GpMDWb0j2xLj7n_wtv0ZPgFM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2ZlL2Yz/L2UwL2ZlZjNlMGUz/MmZiNzM0NTdlZTMx/MzI3MjBlZTIxODU4/LmpwZw" alt="" />
-                    <h2 className='text-lg font-medium capitalize'> {props.ride?.user.fullname.firstname} </h2>
+                    <h2 className='text-lg font-medium capitalize'> {props.ride?.user.fullname.firstname + ' ' + props.ride?.user.fullname.lastname} </h2>
                 </div>
                 <div>
                     <h5 className='text-lg font-semibold'> 2.2 KM </h5>
@@ -74,10 +74,9 @@ const ConfirmRidePopUp = (props) => {
                 </div>
                 
                 <div className='w-full flex items-center justify-between mt-6'>
-                    <form onSubmit={(e)=>{submitHandler(e)}}> 
+                    <form onSubmit={submitHander}> 
                             <input value={otp} onChange={(e)=>setOtp(e.target.value)} type="text" className='bg-[#eee] px-12 font-mono py-2 text-lg rounded-lg w-full mb-4' placeholder='Enter OTP' />
 
-                    {/* <Link to='/captain-riding' className='w-full flex items-center justify-center mt-1 bg-yellow-500 text-black font-semibold p-3 rounded-lg' > Confirm </Link> */}
 
                         <button className='w-full mt-5 text-lg flex justify-center bg-green-600 text-white font-semibold p-3 rounded-lg'>Confirm</button>
 

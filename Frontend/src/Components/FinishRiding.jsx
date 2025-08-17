@@ -35,7 +35,7 @@ const FinishRiding = (props) => {
             <div className='flex items-center justify-between p-4 border-2 border-yellow-500 rounded-lg mt-3'>
                 <div className='flex items-center gap-3'>
                     <img className='h-12 w-12 rounded-full object-cover' src="https://imgs.search.brave.com/_wnGUcXGnb2p6A2L7P_GpMDWb0j2xLj7n_wtv0ZPgFM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2ZlL2Yz/L2UwL2ZlZjNlMGUz/MmZiNzM0NTdlZTMx/MzI3MjBlZTIxODU4/LmpwZw" alt="" />
-                    <h2 className='text-lg font-medium'>{props.ride?.user.fullname.firstname}</h2>
+                    <h2 className='text-lg font-medium'>{props.ride?.user.fullname.firstname + ' ' + props.ride?.user.fullname.lastname}</h2>
                 </div>
                 <div>
                     <h5 className='text-lg font-semibold'> 2.2 KM </h5>

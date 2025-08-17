@@ -12,7 +12,7 @@ import axios from 'axios'
 import { SocketContext } from '../context/SocketContext';
 import { UserDataContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
-// import LiveTracking from '../components/LiveTracking';
+import LiveTracking from '../Components/LiveTracking';
 
 
 const Home = () => {
@@ -219,7 +219,7 @@ const Home = () => {
 
        <div className=' h-screen w-screen'>
          {/* image for temporary use*/}
-                {/* <LiveTracking /> */}
+                <LiveTracking />
        </div>
 
        <div className=' flex flex-col justify-end  absolute h-screen bottom-0 w-full  '>
