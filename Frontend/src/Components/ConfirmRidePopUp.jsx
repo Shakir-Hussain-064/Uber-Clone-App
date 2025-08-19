@@ -52,14 +52,14 @@ const ConfirmRidePopUp = (props) => {
                     <div className='flex items-center gap-5 p-3 border-b-2 '>
                          <i className='text-lg ri-map-pin-user-fill' ></i>
                          <div>
-                            <h3 className='text-lg font-medium' >562/11-A</h3>
+                            <h3 className='text-lg font-medium' >Pick-up</h3>
                             <p className='text-sm -mt-1 text-gray-600 ' >{props.ride?.pickup}</p>
                          </div>
                     </div>
                     <div className='flex items-center gap-5 p-3 border-b-2 '>
                          <i className='text-lg ri-map-pin-2-fill' ></i>
                          <div>
-                            <h3 className='text-lg font-medium' >562/11-A</h3>
+                            <h3 className='text-lg font-medium' >Destination</h3>
                             <p className='text-sm -mt-1 text-gray-600 ' >{props.ride?.destination}</p>
                          </div>
                     </div>
@@ -67,15 +67,15 @@ const ConfirmRidePopUp = (props) => {
                          <i className='text-lg ri-currency-line' ></i>
                          <div>
                             <h3 className='text-lg font-medium' >₹{props.ride?.fare}</h3>
-                            <p className='text-sm -mt-1 text-gray-600 ' >Cash</p>
+                            <p className='text-sm -mt-1 text-gray-600 ' >To Be Paid</p>
                          </div>
                     </div>
                     
                 </div>
                 
-                <div className='w-full flex items-center justify-between mt-6'>
+                <div className='w-1/2 flex items-center justify-between mt-6'>
                     <form onSubmit={submitHander}> 
-                            <input value={otp} onChange={(e)=>setOtp(e.target.value)} type="text" className='bg-[#eee] px-12 font-mono py-2 text-lg rounded-lg w-full mb-4' placeholder='Enter OTP' />
+                            <input value={otp} onChange={(e)=>setOtp(e.target.value)} type="Number" className='bg-[#eee] px-12 font-mono py-2 text-lg rounded-lg w-full mb-4' placeholder='Enter OTP' />
 
 
                         <button className='w-full mt-5 text-lg flex justify-center bg-green-600 text-white font-semibold p-3 rounded-lg'>Confirm</button>
