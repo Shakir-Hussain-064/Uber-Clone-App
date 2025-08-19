@@ -31,7 +31,7 @@ const Riding = () => {
                <div className='flex items-centre justify-between'>
              <img className='h-17' src="https://swyft.pl/wp-content/uploads/2023/05/how-many-people-can-a-uberx-take.jpg" alt="" /> 
               <div className='text-right'>
-               <h2 className='text-lg font medium capitalize'>{ride?.captain.fullname.firstname + ' ' + ride?.user.fullname.lastname}</h2>
+               <h2 className='text-lg font medium capitalize'>{ride?.captain.fullname.firstname + ' ' + ride?.captain.fullname.lastname}</h2>
                <h4 className='text-xl font-semibold -mt-1 -mb-1 '>{ride?.captain.vehicle.plate}</h4>
                <p className='text-sm text-gray-600'>Maruti Suzuki Alto</p>
               </div>
@@ -57,10 +57,9 @@ const Riding = () => {
                     
                 </div>
           </div>
-                <button  className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg' >Make a Payment </button>
+                <button className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg' >Make a Payment </button>
           </div>
     </div>
   )
 }
-
 export default Riding
