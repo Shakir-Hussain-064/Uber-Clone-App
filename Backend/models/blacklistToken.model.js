@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
-const blackListTokenSchema = new mongoose.Schema({
+// Delete the model from the cache if it exists
+if (mongoose.models.BlacklistToken) {
+    delete mongoose.models.BlacklistToken;
+}
+
+const blacklistTokenSchema = new mongoose.Schema({
     token: {
         type: String,
         required: true,
@@ -13,4 +18,4 @@ const blackListTokenSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('BlacklistToken', blackListTokenSchema);
+module.exports = mongoose.model('BlacklistToken', blacklistTokenSchema);
