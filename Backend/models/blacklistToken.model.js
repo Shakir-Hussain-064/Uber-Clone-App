@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
+
 // Delete the model from the cache if it exists
 if (mongoose.models.BlacklistToken) {
     delete mongoose.models.BlacklistToken;
 }
+
 
 const blacklistTokenSchema = new mongoose.Schema({
     token: {
