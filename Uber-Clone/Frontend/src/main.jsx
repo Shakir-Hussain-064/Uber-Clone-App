@@ -9,7 +9,7 @@ import SocketProvider from './context/SocketContext.jsx';
 
 
 createRoot(document.getElementById('root')).render(
- 
+<StrictMode>
   <CaptainContext>
     <UserContext>
       <SocketProvider>
@@ -19,6 +19,7 @@ createRoot(document.getElementById('root')).render(
       </SocketProvider>
     </UserContext>
   </CaptainContext>
+</StrictMode>
 
 )
  
