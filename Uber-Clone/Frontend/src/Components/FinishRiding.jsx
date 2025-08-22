@@ -72,7 +72,7 @@ const FinishRiding = (props) => {
                 <div className='w-full mt-6'>
                         <button
                         onClick={endRide}
-                        className='w-full mt-5 flex  text-lg justify-center bg-green-600 text-white font-semibold p-3 rounded-lg'>Finish Ride</button>
+                        className='w-full mt-5 flex text-lg justify-center bg-black text-white px-4 py-2 rounded-lg font-semibold p-3 rounded-lg'>Finish Ride</button>
 
                            
 

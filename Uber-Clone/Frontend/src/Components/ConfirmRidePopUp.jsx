@@ -32,11 +32,11 @@ const ConfirmRidePopUp = (props) => {
   return (
     <div>
         <h5 className='p-1 text-center absolute top-0 w-[92%]' onClick={()=>{
-            props.setRidePopUpPanel(false)
+            props.setRidePopupPanel(false)
           }}><i className=' text-3xl text-gray-300 ri-arrow-down-wide-line'></i></h5>
             <h3 className='font-semibold text-2xl mb-5'>Confirm this ride to Start</h3>
 
-            <div className='flex items-center justify-between p-3 bg-yellow-500 rounded-lg mt-3'>
+            <div className='flex items-center justify-between p-3 bg-yellow-500 border-2 border-black rounded-lg mt-3'>
                 <div className='flex items-center gap-3'>
                     <img className='h-12 w-12 rounded-full object-cover' src="https://imgs.search.brave.com/_wnGUcXGnb2p6A2L7P_GpMDWb0j2xLj7n_wtv0ZPgFM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2ZlL2Yz/L2UwL2ZlZjNlMGUz/MmZiNzM0NTdlZTMx/MzI3MjBlZTIxODU4/LmpwZw" alt="" />
                     <h2 className='text-lg font-medium capitalize'> {props.ride?.user.fullname.firstname + ' ' + props.ride?.user.fullname.lastname} </h2>
@@ -73,18 +73,16 @@ const ConfirmRidePopUp = (props) => {
                     
                 </div>
                 
-                <div className='w-1/2 flex items-center justify-between mt-6'>
+                <div className='w-full flex items-center justify-center mt-6'>
                     <form onSubmit={submitHander}> 
                             <input value={otp} onChange={(e)=>setOtp(e.target.value)} type="Number" className='bg-[#eee] px-12 font-mono py-2 text-lg rounded-lg w-full mb-4' placeholder='Enter OTP' />
-
-
-                        <button className='w-full mt-5 text-lg flex justify-center bg-green-600 text-white font-semibold p-3 rounded-lg'>Confirm</button>
-
-
-                    <button onClick={()=>{
-                        props.setConfirmRidePopUpPanel(false)
-                        props.setRidePopUpPanel(false)
-                    }} className='w-full mt-1 mr-1 bg-red-500 text-gray-800 font-semibold p-3 rounded-lg' >Cancel</button>
+                        <button className='w-full mt-5 text-lg flex justify-center bg-black text-white rounded-lg font-semibold p-3 rounded-lg'>Confirm</button>
+                    <button
+                     onClick={()=>{
+                         props.setConfirmRidePopUpPanel(false)
+                         props.setRidePopUpPanel(false)
+                     }}
+                     className='w-full mt-1 mr-1 bg-red-600 text-gray-800 font-semibold p-3 rounded-lg' >Cancel</button>
 
                     </form>
                 </div>  

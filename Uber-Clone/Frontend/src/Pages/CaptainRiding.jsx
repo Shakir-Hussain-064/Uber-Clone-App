@@ -37,11 +37,11 @@ const CaptainRiding = () => {
               </Link>
           </div>
 
-              <div className="h-4/5 ">
+              <div className="h-[80%] ">
                      <LiveTracking />
               </div>
-               
-          <div className='h-1/5 p-6 flex items-center justify-between relative '
+
+          <div className='h-[20%] p-6 flex items-center justify-between relative'
 
             onClick={()=>{
                 setFinishRidingPanel(true)
@@ -52,8 +52,9 @@ const CaptainRiding = () => {
 
             }}><i className=' text-3xl text-gray-800 ri-arrow-up-wide-line'></i></h5>
 
-                <h4 className='text-xl font-semibold'>{'4 KM away'}</h4>
-                <button className='w-[60%] mt-1 bg-green-600 text-white text-lg font-semibold p-3 rounded-lg'>Complete Ride</button>
+
+                <h4 className='text-xl font-semibold '>{'4 KM away'}</h4>
+                <button className='w-[60%] mt-1 bg-black text-white px-4 py-2 rounded-lg  text-lg font-semibold p-3 rounded-lg'>Complete Ride</button>
           </div>
 
           

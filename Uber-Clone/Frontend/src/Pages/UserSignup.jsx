@@ -37,8 +37,10 @@ const UserSignup = () => {
             setFirstName('')
             setLastName('')
             setPassword('')
+
     }
 
+    
     return (
         <div className='p-5 h-screen flex flex-col justify-between'>
             <div>
