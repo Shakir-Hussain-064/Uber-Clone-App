@@ -9,5 +9,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 5173, // You can change this if needed
+    strictPort: true,
+    fastRefresh: false
   },
 })
