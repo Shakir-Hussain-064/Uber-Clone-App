@@ -7,11 +7,8 @@ let io;
 function initializeSocket(server) {
     io = socketIo(server, {
         cors: {
-                origin:["https://cx4m7fsj-5173.inc1.devtunnels.ms", "http://localhost:5173"], // your Vite frontend port
-            // origin: '*',
-            methods: [ 'GET', 'POST' ],
-                credentials: true
-
+            origin: '*',
+            methods: [ 'GET', 'POST' ]
         }
     });
 
@@ -22,9 +19,6 @@ function initializeSocket(server) {
         socket.on('join', async (data) => {
             const { userId, userType } = data;
 
-            console.log(`user ${userId} joined as ${userType}`);
-
-            
             if (userType === 'user') {
                 await userModel.findByIdAndUpdate(userId, { socketId: socket.id });
             } else if (userType === 'captain') {
@@ -39,7 +33,6 @@ function initializeSocket(server) {
             if (!location || !location.ltd || !location.lng) {
                 return socket.emit('error', { message: 'Invalid location data' });
             }
-
 
             await captainModel.findByIdAndUpdate(userId, {
                 location: {
@@ -57,7 +50,7 @@ function initializeSocket(server) {
 
 const sendMessageToSocketId = (socketId, messageObject) => {
 
-console.log(messageObject); 
+console.log(messageObject);
 
     if (io) {
         io.to(socketId).emit(messageObject.event, messageObject.data);
