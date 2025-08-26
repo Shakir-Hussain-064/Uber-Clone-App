@@ -12,6 +12,14 @@ const rideRoutes = require('./routes/ride.routes')
 
 connectToDb(); 
 
+// Enable CORS for Socket.IO and regular API requests
+app.use(cors({
+  origin: "https://uber-clone-app-frontend.onrender.com",
+  credentials: true,
+}));
+
+
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,10 +33,7 @@ app.use('/rides', rideRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello World!'); 
+
 });
 
-
-
-
-
-module.exports = app;
+module.exports = app;   
